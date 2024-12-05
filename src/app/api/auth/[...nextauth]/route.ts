@@ -10,7 +10,6 @@ const MOCK_USER = {
 };
 
 const handler = NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -57,6 +56,7 @@ const handler = NextAuth({
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };

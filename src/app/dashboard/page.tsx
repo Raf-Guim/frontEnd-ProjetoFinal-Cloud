@@ -36,7 +36,7 @@ export default function DashboardPage() {
                 Welcome back, {session.user.name || session.user.email}!
               </h1>
               <button
-                onClick={() => signOut({ callbackUrl: '/login/email' })}
+                onClick={() => signOut({ callbackUrl: 'http://localhost:80/login/email' })}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Sign out
