@@ -1,6 +1,13 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { api } from "@/app/services/api";
+
+// Mock user for demonstration
+const MOCK_USER = {
+  id: "1",
+  name: "Demo User",
+  email: "demo@example.com",
+  password: "password123"
+};
 
 const handler = NextAuth({
   providers: [
@@ -15,19 +22,16 @@ const handler = NextAuth({
           return null;
         }
 
-        try {
-          const response = await api.login(credentials.email, credentials.password);
-          if (response.user) {
-            return {
-              id: response.user.id,
-              email: response.user.email,
-              name: response.user.name,
-            };
-          }
-          return null;
-        } catch {
-          return null;
+        // Mock authentication logic
+        if (credentials.email === MOCK_USER.email && 
+            credentials.password === MOCK_USER.password) {
+          return {
+            id: MOCK_USER.id,
+            name: MOCK_USER.name,
+            email: MOCK_USER.email
+          };
         }
+        return null;
       }
     })
   ],
