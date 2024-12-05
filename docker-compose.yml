@@ -4,6 +4,8 @@ services:
   app:
     build: .
     container_name: app
+    environment:
+      - NEXTAUTH_SECRET='BU3Hx5A7XzkOZ0XW2vUHnUYZjHcHtXOLxePqLDFAOnQ='
     restart: unless-stopped
     networks:
       - webnet
