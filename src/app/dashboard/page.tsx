@@ -26,6 +26,11 @@ export default function DashboardPage() {
     return null;
   }
 
+  const handleSignOut = () => {
+    const baseUrl = process.env.NEXT_PUBLIC_HOST_URL || window.location.host;
+    signOut({ callbackUrl: `http://${baseUrl}/login/email` });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -36,7 +41,7 @@ export default function DashboardPage() {
                 Welcome back, {session.user.name || session.user.email}!
               </h1>
               <button
-                onClick={() => signOut({ callbackUrl: 'http://44.214.162.94/login/email' })}
+                onClick={handleSignOut}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Sign out

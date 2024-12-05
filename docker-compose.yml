@@ -1,12 +1,11 @@
-# version: '3.8'
-
 services:
   frontend:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - NEXTAUTH_URL=http://localhost:80
+      - HOST_URL=${HOST_URL:-localhost}
+      - NEXTAUTH_URL=http://${HOST_URL:-localhost}
       - NEXTAUTH_SECRET='BU3Hx5A7XzkOZ0XW2vUHnUYZjHcHtXOLxePqLDFAOnQ='
     networks:
       - app-network
